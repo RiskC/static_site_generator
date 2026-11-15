@@ -1,7 +1,11 @@
 import unittest
-from htmlnode import HTMLNode
+from htmlnode import HTMLNode, LeafNode
+from textnode import TextNode, TextType
+from textnode import text_node_to_html_node
 
 class TestHTMLNode(unittest.TestCase):
+
+    # tests for htmlnode
 
     test_self_props = {
     "href": "https://www.google.com",
@@ -35,6 +39,7 @@ class TestHTMLNode(unittest.TestCase):
         self.assertEqual(node.value, "this is a paragraph")
         self.assertEqual(node.children, None)
         self.assertEqual(node.props, None)
+
 
 
 if __name__ == "__main__":
