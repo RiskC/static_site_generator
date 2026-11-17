@@ -34,11 +34,11 @@ def text_node_to_html_node(text_node: TextNode) -> LeafNode:
     if text_node.text_type == TextType.CODE:
         return LeafNode("code", text_node.text, None)
     if text_node.text_type == TextType.LINK:
-        if not text_node.url:
+        if text_node.url is None:
             raise ValueError("no url or incorrect url")
         return LeafNode("a", text_node.text, {"href":f'{text_node.url}'})
     if text_node.text_type == TextType.IMAGE:
-        if not text_node.url:
+        if text_node.url is None:
             raise ValueError("no url or incorrect url")
-        return LeafNode("img", None, {"src":f'{text_node.url}', "alt":f'{text_node.text}'})
+        return LeafNode("img", "", {"src":f'{text_node.url}', "alt":f'{text_node.text}'})
     raise ValueError("Invalid text type:{text_node.type}")

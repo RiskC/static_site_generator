@@ -22,15 +22,15 @@ class TestParentNode(unittest.TestCase):
 
     def test_no_tag_test(self):
         node = LeafNode("p", "paragraph text")
-        node2 = ParentNode("", [node])
-        
+        node2 = ParentNode(None, [node])
+
         with self.assertRaises(ValueError) as cm:
             node2.to_html()
         self.assertEqual(str(cm.exception), "Parent node does not have a tag")
 
 
     def test_no_children_test(self):
-        node = ParentNode("p", [])
+        node = ParentNode("p", None)
 
         with self.assertRaises(ValueError) as cm:
             node.to_html()
@@ -58,7 +58,7 @@ class TestParentNode(unittest.TestCase):
         node8 = LeafNode("h3", "and I want it now, no objections")
         node9 = ParentNode("b", [node7, node8, node6])
         self.assertEqual(
-            node9.to_html(), 
+            node9.to_html(),
             "<b><h1>My request is stated below</h1><h3>and I want it now, no objections</h3><p><i>I</i><i>want</i><i>chocolate</i><i>chip</i><i>pancakes</i></p></b>"
         )
 
