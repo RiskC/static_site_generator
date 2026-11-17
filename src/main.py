@@ -1,14 +1,13 @@
+import os
+
 from textnode import TextNode
 from htmlnode import HTMLNode
+
+from static_to_public import static_to_public
+
 def main():
-    test_obj = TextNode("hey its me", "bold_text")
-
-    print(test_obj)
+    static_to_public("static", "public")
+    print(os.listdir(os.path.abspath("public")))
     
-    test_obj2_kid = HTMLNode("p", "this is a paragraph") 
-    test_obj2 = HTMLNode("p", "this is a paragraph", [test_obj2_kid],{"href":"boot.dev"})
-
-    print(test_obj2)
-
 if __name__ == '__main__':
     main()
