@@ -6,9 +6,7 @@ def static_to_public(src_dir, dest_dir):
 
     #absolute paths to source and destination
     src_abs_path = os.path.abspath(src_dir)
-    #results to -> juice/bootdotdev/2aproj/aiagent/functions/static
     dest_abs_path = os.path.abspath(dest_dir)
-    # results to -> juice/bootdotdev/2aproj/aiagent/functions/public
 
     
    
