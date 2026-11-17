@@ -4,7 +4,7 @@ from pathlib import Path
 from generate_page import generate_page
 
 
-def generate_pages_recursive(dir_path_content, template_path, dest_dir_path):
+def generate_pages_recursive(dir_path_content, template_path, dest_dir_path, basepath):
     source_dir = os.path.abspath(dir_path_content)
     template_path_abs = os.path.abspath(template_path)
     output_dir = os.path.abspath(dest_dir_path)
@@ -23,10 +23,10 @@ def generate_pages_recursive(dir_path_content, template_path, dest_dir_path):
             if source_entry_path.endswith(".md"):
                 output_file_path = os.path.join(output_dir, entry)
                 output_html_suffix = Path(output_file_path).with_suffix('.html')
-                generate_page(source_entry_path, template_path_abs, output_html_suffix)
+                generate_page(source_entry_path, template_path_abs, output_html_suffix, basepath)
         else:
             next_dest_dir = os.path.join(output_dir, entry)
-            generate_pages_recursive(source_entry_path,template_path_abs, next_dest_dir)
+            generate_pages_recursive(source_entry_path,template_path_abs, next_dest_dir, basepath)
 
 
 
